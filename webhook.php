@@ -1,5 +1,4 @@
 <?php
-    http_response_code(200);
     
     require __DIR__ .  '/vendor/autoload.php';
 
@@ -7,6 +6,7 @@
 
     switch($_POST["type"]) {
         case "payment":
+            http_response_code(200);
             // $payment = MercadoPago\Payment.find_by_id($_POST["id"]);
 
             $myfile = fopen("informacionDePagoExitoso.txt", "w");
@@ -16,6 +16,7 @@
 
             break;
         case "plan":
+            http_response_code(201);
             // $plan = MercadoPago\Plan.find_by_id($_POST["id"]);
 
             $myfile = fopen("informacionDePagoExitoso.txt", "w");
@@ -24,6 +25,7 @@
             fclose($myfile);
             break;
         case "subscription":
+            http_response_code(202);
             // $plan = MercadoPago\Subscription.find_by_id($_POST["id"]);
 
             $myfile = fopen("informacionDePagoExitoso.txt", "w");
@@ -32,6 +34,7 @@
             fclose($myfile);
             break;
         case "invoice":
+            http_response_code(203);
             // $plan = MercadoPago\Invoice.find_by_id($_POST["id"]);
 
             $myfile = fopen("informacionDePagoExitoso.txt", "w");
@@ -40,6 +43,7 @@
             fclose($myfile);
             break;
         case "test":
+            http_response_code(204);
             // $plan = MercadoPago\Invoice.find_by_id($_POST["id"]);
 
             $myfile = fopen("info.txt", "w");
