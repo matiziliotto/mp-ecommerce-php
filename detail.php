@@ -1,11 +1,83 @@
+<?php
+    // SDK de Mercado Pago
+    require __DIR__ .  '/vendor/autoload.php';
+
+    // Agrega credenciales de pago
+    /*
+        collector_id: 469485398
+        public-key: APP_USR-7eb0138a-189f-4bec-87d1-c0504ead5626
+        access-token: APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398
+    */
+    MercadoPago\SDK::setAccessToken("APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398");
+
+    // Crea un objeto de preferencia
+    $preference = new MercadoPago\Preference();
+
+    
+    // Crea un metodo de pago y limitar cuotas en la preferencia
+    $payment_methods = new MercadoPago\PaymentMethod();
+    $payment_methods->excluded_payment_types = array(
+        array("id" => "atm"),
+    );
+    $payment_methods->excluded_payment_methods = array(
+        array("id" => "amex"),
+    );
+    $payment_methods->installments = 6;
+
+    $preference->payment_methods = $payment_methods;
+    
+    // Crea un pagador en la preferencia
+    $payer = new MercadoPago\Payer();
+    $payer->name = "Lalo";
+    $payer->surname = "Landa";
+    $payer->email = "test_user_63274575@testuser.com";
+    $payer->phone = array(
+        "area_code" => "11",
+        "number" => "22223333",
+    );
+    $payer->address = array(
+        "street_name" => "False",
+        "street_number" => 123,
+        "zip_code" => "1111",
+    );
+
+    $preference->payer = $payer;
+
+    // Crea un ítem en la preferencia
+    $item = new MercadoPago\Item();
+    $item->id = "1234";
+    $item->title = $_POST['title'];
+    $item->description = "Dispositivo móvil de Tienda e-commerce";
+    $item->picture_url = $_POST['img'];
+    $item->quantity = $_POST['unit'];
+    $item->unit_price = $_POST['price'];
+
+    $preference->items = array($item);
+
+    // Crea urls de retorno en la preferencia
+    $preference->back_urls = array(
+        "failure" => "./payment-failure.php",
+        "pending" => "./payment-pending.php",
+        "success" => "./payment-success.php"
+    );
+
+    $preference->auto_return= "approved";
+
+    
+    $preference->external_reference = "mati_97_ziliotto@hotmail.com";
+
+    $preference->save();
+
+?>
+
 <!DOCTYPE html>
 <html class="supports-animation supports-columns svg no-touch no-ie no-oldie no-ios supports-backdrop-filter as-mouseuser" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <meta name="viewport" content="width=1024">
-    <title>Tienda e-commerce</title>
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=1024">
+<title>Tienda e-commerce</title>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="format-detection" content="telephone=no">
 
     <script
     src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -130,7 +202,12 @@
                                             <?php echo "$" . $_POST['unit'] ?>
                                         </h3>
                                     </div>
-                                    <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button>
+                                    <form action="./procesar-pago.php" method="POST">
+                                        <script
+                                            src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
+                                            data-preference-id="<?php echo $preference->id; ?>" data-button-label="Pagar la compra">
+                                        </script>
+                                    </form>
                                 </div>
                             </div>
                         </div>
