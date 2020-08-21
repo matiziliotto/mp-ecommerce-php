@@ -1,7 +1,11 @@
 <?php
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $myfile = fopen("info1.txt", "w") or die("Unable to open file!");
-        $txt = json_encode(var_dump($_POST));
+        $data = array(
+            "id" => $_POST['id'],
+            "type" => $_POST['type']
+        );
+        $txt = json_encode($data);
         fwrite($myfile, $txt);
         fclose($myfile);
     }
