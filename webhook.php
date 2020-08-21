@@ -8,15 +8,15 @@
         );
         $txt = json_encode($data);
         */
-        try{
-            $txt = json_decode(file_get_contents('php://input'), true);
-            fwrite($myfile, $txt);
-        }
-        catch(Exception $e){
-            $txt = "Hubo un error: ".$e->getMessage();
-            fwrite($myfile, $txt);
-        }
+        $txt = file_get_contents('php://input');
+        fwrite($myfile, $txt);
+        
         fclose($myfile);
+        
+        $myfile2 = fopen("info2.txt", "w") or die("Unable to open file!");
+        $txt2 = "Entro al POST y paso despues de escribir el primer archivo.";
+        fwrite($myfile2, $txt2);
+        fclose($myfile2);
     }
     else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $myfile = fopen("info2.txt", "w") or die("Unable to open file!");
