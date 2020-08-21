@@ -10,19 +10,31 @@
             $payment = MercadoPago\Payment.find_by_id($_POST["id"]);
 
             $myfile = fopen("informacionDePagoExitoso.txt", "w");
-            $txt = $payment;
+            $txt = "Entro al payment";
             fwrite($myfile, $txt);
             fclose($myfile);
 
             break;
         case "plan":
             $plan = MercadoPago\Plan.find_by_id($_POST["id"]);
+            $myfile = fopen("informacionDePagoExitoso.txt", "w");
+            $txt = "Entro al plan";
+            fwrite($myfile, $txt);
+            fclose($myfile);
             break;
         case "subscription":
             $plan = MercadoPago\Subscription.find_by_id($_POST["id"]);
+            $myfile = fopen("informacionDePagoExitoso.txt", "w");
+            $txt = "Entro al subscription";
+            fwrite($myfile, $txt);
+            fclose($myfile);
             break;
         case "invoice":
             $plan = MercadoPago\Invoice.find_by_id($_POST["id"]);
+            $myfile = fopen("informacionDePagoExitoso.txt", "w");
+            $txt = "Entro al invoice";
+            fwrite($myfile, $txt);
+            fclose($myfile);
             break;
     }
 
