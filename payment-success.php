@@ -17,7 +17,9 @@
                 <div class="card-body pb-0">
                     <h5 class="card-title">Pago realizado con exito!</h5>
                     <div class="text-center mt-3 mb-3" >
-                        <a href="#" class="btn btn-primary" style="background-color: #009ee3;border:none">Terminar</a>
+                        <strong>Payment type: </strong><?php echo $_GET['payment_type']; ?><br>
+                        <strong>External reference: </strong><?php echo $_GET['external_reference']; ?><br>
+                        <strong>Collection id: </strong><?php echo $_GET['collection_id']; ?><br>
                     </div>
                 </div>
             </div>

@@ -49,7 +49,8 @@
     $item->id = "1234";
     $item->title = $_POST['title'];
     $item->description = "Dispositivo móvil de Tienda e-commerce";
-    $item->picture_url = $_POST['img'];
+    // $item->picture_url = "http://localhost/mp-ecommerce-php/".substr($_POST['img'], 1);
+    $item->picture_url = "https://matiziliotto-mp-ecommerce-php.herokuapp.com/".substr($_POST['img'], 1);
     $item->quantity = $_POST['unit'];
     $item->unit_price = $_POST['price'];
 
