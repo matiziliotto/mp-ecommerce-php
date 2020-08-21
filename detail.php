@@ -57,9 +57,13 @@
 
     // Crea urls de retorno en la preferencia
     $preference->back_urls = array(
-        "failure" => "/payment-failure.php",
-        "pending" => "/payment-pending.php",
-        "success" => "/payment-success.php"
+        "failure" => "https://matiziliotto-mp-ecommerce-php.herokuapp.com/payment-failure.php",
+        "pending" => "https://matiziliotto-mp-ecommerce-php.herokuapp.com/payment-pending.php",
+        "success" => "https://matiziliotto-mp-ecommerce-php.herokuapp.com/payment-success.php"
+        // "failure" => "http://localhost/mp-ecommerce-php/payment-failure.php",
+        // "pending" => "http://localhost/mp-ecommerce-php/payment-pending.php",
+        // "success" => "http://localhost/mp-ecommerce-php/payment-success.php",
+
     );
 
     $preference->auto_return= "approved";
