@@ -71,7 +71,7 @@
 
     $preference->external_reference = "mati_97_ziliotto@hotmail.com";
 
-    $preference->notification_url = "https://matiziliotto-mp-ecommerce-php.herokuapp.com/webhook.php?source_news=webhooks";
+    $preference->notification_url = "https://matiziliotto-mp-ecommerce-php.herokuapp.com/webhook.php";
 
     $preference->save();
 ?>
