@@ -36,6 +36,13 @@
             fwrite($myfile, $txt);
             fclose($myfile);
             break;
+        case "test":
+                $plan = MercadoPago\Invoice.find_by_id($_POST["id"]);
+                $myfile = fopen("informacionDePagoExitoso.txt", "w");
+                $txt = "Entro al test";
+                fwrite($myfile, $txt);
+                fclose($myfile);
+                break;
     }
 
 ?>
