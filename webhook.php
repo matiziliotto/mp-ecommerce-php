@@ -7,11 +7,11 @@
 
     switch($_POST["type"]) {
         case "payment":
-            $payment = new MercadoPago\Payment();
-            $data = $payment->find_by_id($_POST["id"]);
+            // $payment = new MercadoPago\Payment();
+            // $data = $payment->find_by_id($_POST["id"]);
 
             $myfile = fopen("info.txt", "w") or die("Unable to open file!");
-            $txt = $data;
+            $txt = "Entro al payment";
             fwrite($myfile, $txt);
             fclose($myfile);
 
