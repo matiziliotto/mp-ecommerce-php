@@ -10,6 +10,11 @@
             $payment = new MercadoPago\Payment();
             $data = $payment->find_by_id($_POST["id"]);
 
+            $myfile = fopen("info.txt", "w") or die("Unable to open file!");
+            $txt = $data;
+            fwrite($myfile, $txt);
+            fclose($myfile);
+
             break;
         case "plan":
             $plan = new MercadoPago\Plan();

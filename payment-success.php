@@ -20,6 +20,7 @@
                         <strong>Payment type: </strong><?php echo $_GET['payment_type']; ?><br>
                         <strong>External reference: </strong><?php echo $_GET['external_reference']; ?><br>
                         <strong>Collection id: </strong><?php echo $_GET['collection_id']; ?><br>
+                        <a class="mercadopago-button" href="index.php">Volver al sitio</a>
                     </div>
                 </div>
             </div>

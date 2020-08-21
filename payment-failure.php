@@ -17,7 +17,7 @@
                 <div class="card-body pb-0">
                     <h5 class="card-title">Hubo un error al realizar el pago</h5>
                     <div class="text-center mt-3 mb-3" >
-                        <a href="#" class="btn btn-primary" style="background-color: #009ee3;border:none">Terminar</a>
+                        <a class="mercadopago-button" href="index.php">Volver al sitio</a>
                     </div>
                 </div>
             </div>
