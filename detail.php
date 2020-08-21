@@ -57,9 +57,9 @@
 
     // Crea urls de retorno en la preferencia
     $preference->back_urls = array(
-        "failure" => "./payment-failure.php",
-        "pending" => "./payment-pending.php",
-        "success" => "./payment-success.php"
+        "failure" => "/payment-failure.php",
+        "pending" => "/payment-pending.php",
+        "success" => "/payment-success.php"
     );
 
     $preference->auto_return= "approved";
@@ -84,6 +84,8 @@
     src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
+
+    <script src="https://www.mercadopago.com/v2/security.js" view="item"></script>
 
     <link rel="stylesheet" href="./assets/category-landing.css" media="screen, print">
 
@@ -203,12 +205,7 @@
                                             <?php echo "$" . $_POST['unit'] ?>
                                         </h3>
                                     </div>
-                                    <form action="./procesar-pago.php" method="POST">
-                                        <script
-                                            src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
-                                            data-preference-id="<?php echo $preference->id; ?>" data-button-label="Pagar la compra">
-                                        </script>
-                                    </form>
+                                    <a class="mercadopago-button" href="<?php echo $preference->init_point; ?>">Pagar la compra</a>
                                 </div>
                             </div>
                         </div>

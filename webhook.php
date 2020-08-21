@@ -1,6 +1,6 @@
 <?php
     http_response_code(200);
-    
+
     require __DIR__ .  '/vendor/autoload.php';
 
     MercadoPago\SDK::setAccessToken("APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398");
@@ -10,50 +10,21 @@
             $payment = new MercadoPago\Payment();
             $data = $payment->find_by_id($_POST["id"]);
 
-            $myfile = fopen("info.txt", "w");
-            $txt = "Entro al payment";
-            fwrite($myfile, $txt);
-            fclose($myfile);
-
             break;
         case "plan":
             $plan = new MercadoPago\Plan();
             $data = $plan->find_by_id($_POST["id"]);
-
-            $myfile = fopen("info.txt", "w");
-            $txt = "Entro al plan";
-            fwrite($myfile, $txt);
-            fclose($myfile);
 
             break;
         case "subscription":
             $subscription = new MercadoPago\Subscription();
             $data = $subscription->find_by_id($_POST["id"]);
 
-            $myfile = fopen("info.txt", "w");
-            $txt = "Entro al subscription";
-            fwrite($myfile, $txt);
-            fclose($myfile);
-
             break;
         case "invoice":
             $invoice = new MercadoPago\Invoice();
             $data = $invoice->find_by_id($_POST["id"]);
 
-            $myfile = fopen("info.txt", "w");
-            $txt = "Entro al invoice";
-            fwrite($myfile, $txt);
-            fclose($myfile);
-
-            break;
-
-        case "test":
-            $myfile = fopen("info.txt", "w");
-            $txt = "Entro al test";
-            fwrite($myfile, $txt);
-            fclose($myfile);
-
             break;
     }
-
 ?>
