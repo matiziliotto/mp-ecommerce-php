@@ -8,8 +8,14 @@
         );
         $txt = json_encode($data);
         */
-        $txt = json_decode(file_get_contents('php://input'), true);
-        fwrite($myfile, $txt);
+        try{
+            $txt = json_decode(file_get_contents('php://input'), true);
+            fwrite($myfile, $txt);
+        }
+        catch(Exception $e){
+            $txt = "Hubo un error: ".$e->getMessage();
+            fwrite($myfile, $txt);
+        }
         fclose($myfile);
     }
     else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
