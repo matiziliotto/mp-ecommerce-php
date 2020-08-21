@@ -1,16 +1,19 @@
 <?php
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $myfile = fopen("info1.txt", "w") or die("Unable to open file!");
+        $txt = json_encode($_POST);
+        fwrite($myfile, $txt);
+        fclose($myfile);
+    }
+    else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $myfile = fopen("info2.txt", "w") or die("Unable to open file!");
+        $txt = json_encode($_GET);
+        fwrite($myfile, $txt);
+        fclose($myfile);
+    }
+
     $myfile = fopen("info.txt", "w") or die("Unable to open file!");
     $txt = json_encode($_REQUEST);
-    fwrite($myfile, $txt);
-    fclose($myfile);
-
-    $myfile = fopen("info1.txt", "w") or die("Unable to open file!");
-    $txt = json_encode($_POST);
-    fwrite($myfile, $txt);
-    fclose($myfile);
-
-    $myfile = fopen("info2.txt", "w") or die("Unable to open file!");
-    $txt = json_encode($_GET);
     fwrite($myfile, $txt);
     fclose($myfile);
 
