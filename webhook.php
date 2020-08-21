@@ -10,11 +10,6 @@
     fwrite($myfile, $txt);
     fclose($myfile);
 
-    $myfile = fopen("info2.txt", "w") or die("Unable to open file!");
-    $txt = json_encode($_POST);
-    fwrite($myfile, $txt);
-    fclose($myfile);
-
     switch($_POST["type"]) {
         case "payment":
             $payment = new MercadoPago\Payment();
